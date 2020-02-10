@@ -14,10 +14,11 @@ void draw_line(int x0, int y0, int x1, int y1, screen s, color c) {
   }
   int A = y1 - y0;
   int B = x0 - x1;
-  if( x1 - x0 >= y1 - y0){
+  if( x1 - x0 >= y1 - y0 && x1 - x0 >= y0 - y1){
     // slope between -1 and 1
     if( y1 > y0 ){
       // CASE octant I (octant V)
+      // printf("octant I\n");
       int d = 2*A + B;
       A *= 2;
       B *= 2;
@@ -32,6 +33,7 @@ void draw_line(int x0, int y0, int x1, int y1, screen s, color c) {
       }
     } else {
       // CASE octant VIII (octant IV)
+      // printf("octant VIII\n");
       int d = 2*A - B;
       A *= 2;
       B *= 2;
@@ -49,6 +51,7 @@ void draw_line(int x0, int y0, int x1, int y1, screen s, color c) {
     // slope magnitude greater than 1
     if( y1 > y0 ){
       // CASE octant II (octant VI)
+      // printf("octant II\n");
       int d = A + 2*B;
       A *= 2;
       B *= 2;
@@ -63,6 +66,7 @@ void draw_line(int x0, int y0, int x1, int y1, screen s, color c) {
       }
     }else {
       // CASE octant VII (octant III)
+      // printf("octant VII\n");
       int d = A - 2*B;
       A *= 2;
       B *= 2;
