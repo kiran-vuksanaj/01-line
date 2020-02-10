@@ -62,7 +62,19 @@ void draw_line(int x0, int y0, int x1, int y1, screen s, color c) {
 	d += B;
       }
     }else {
-
+      // CASE octant VII (octant III)
+      int d = A - 2*B;
+      A *= 2;
+      B *= 2;
+      while ( y0 > y1 ){
+	plot(s,c,x0,y0);
+	if( d > 0 ){
+	  x0++;
+	  d += A;
+	}
+	y0--;
+	d -= B;
+      }
     }
   }
 }

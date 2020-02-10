@@ -36,8 +36,8 @@ int main() {
 
   //octants 7 and 3
   c.blue = 255;
-  // draw_line(0, YRES-1, XRES/2, 0, s, c);
-  // draw_line(XRES-1, 0, XRES/2, YRES-1, s, c);
+  draw_line(0, YRES-1, XRES/2, 0, s, c);
+  draw_line(XRES-1, 0, XRES/2, YRES-1, s, c);
 
   //horizontal and vertical
   c.blue = 0;
