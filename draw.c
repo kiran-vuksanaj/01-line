@@ -14,33 +14,37 @@ void draw_line(int x0, int y0, int x1, int y1, screen s, color c) {
   }
   int A = y1 - y0;
   int B = x0 - x1;
-  // CASE octant I:
-  if( x1 - x0 >= y1 - y0 && y1 > y0 ){
-    int d = 2*A + B;
-    A *= 2;
-    B *= 2;
-    while( x0 < x1 ){
-      plot(s,c,x0,y0);
-      if( d > 0 ){
-	y0++;
-	d += B;
-      }
-      x0++;
-      d += A;
-    }
-  } else if( x1 - x0 <= y1 - y0 && y1 > y0 ){
-    // CASE octant II
-    int d = A + 2*B;
-    A *= 2;
-    B *= 2;
-    while( y0 < y1 ){
-      plot(s,c,x0,y0);
-      if( d > 0 ){
+  if( x1 - x0 >= y1 - y0){
+    if( y1 > y0 ){
+      // CASE octant I (octant V)
+      int d = 2*A + B;
+      A *= 2;
+      B *= 2;
+      while( x0 < x1 ){
+	plot(s,c,x0,y0);
+	if( d > 0 ){
+	  y0++;
+	  d += B;
+	}
 	x0++;
-	d += B;
+	d += A;
       }
-      y0++;
-      d += A;
+    } else {
+      // CASE octant VIII (octant IV)
+      int d = 2*A - B;
+      A *= 2;
+      B *= 2;
+      while( x0 < x1 ){
+	plot(s,c,x0,y0);
+	if( d < 0 ){
+	  y0--;
+	  d -= B;
+	}
+	x0++;
+	d += A;
+      }
     }
+  } else {
+    // slope magnitude greater than 1
   }
 }
